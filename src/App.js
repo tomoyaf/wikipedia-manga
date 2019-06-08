@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import titles from "./titles.json";
+// import titles from "./titles.json";
 import { ExpandMore, ExpandLess, Shuffle } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 
@@ -129,6 +129,8 @@ function ListItem({ title, idx }) {
     </StyledListItem>
   );
 }
+
+const titles = [];
 
 function App() {
   shuffle(titles);
