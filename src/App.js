@@ -73,7 +73,7 @@ function ListItem({ title, idx }) {
   const [expanded, set_expanded] = React.useState(false);
   return (
     <StyledListItem onClick={e => set_expanded(prev => !prev)}>
-      <div style={{ display: "flex" }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <Icon>{expanded ? <ExpandMore /> : <ExpandLess />}</Icon>
         {title}
       </div>
