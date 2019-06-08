@@ -45,6 +45,7 @@ const Header = styled.div`
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
   padding: 0.8rem;
+  box-sizing: border-box;
   padding-left: 1.2rem;
 
   display: flex;
