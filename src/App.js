@@ -44,7 +44,7 @@ const Header = styled.div`
   width: 100vw;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-  padding: 0.7rem;
+  padding: 0.8rem;
   padding-left: 1.2rem;
 
   display: flex;
@@ -53,12 +53,13 @@ const Header = styled.div`
 `;
 
 const Title = styled.div`
-  font-size: 1.2rem;
-  padding-left: 0.8rem;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding-left: 0.5rem;
 `;
 const TitleSub = styled.div`
   font-size: 0.8rem;
-  padding-left: 0.8rem;
+  padding-left: 0.5rem;
 `;
 
 function shuffle(arr) {
@@ -108,8 +109,8 @@ function App() {
   return (
     <Wrapper>
       <Header>
-        <Title>Wikipedia 漫画</Title>
-        <TitleSub>ランダムにWikipediaの漫画を表示します</TitleSub>
+        <Title>Wikipedia漫画</Title>
+        <TitleSub>ランダムにWikipediaの漫画を表示</TitleSub>
       </Header>
       <StyledUnorderedList>
         {titles.map((title, idx) => (
