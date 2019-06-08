@@ -99,7 +99,7 @@ function ListItem({ title, idx }) {
             target="_blank"
             rel="noopener noreferrer"
             href={`https://ja.wikipedia.org/wiki/${title}`}
-            style={{ paddingLeft: "0.8rem" }}
+            style={{ paddingLeft: "0.8rem", width: "fit-content" }}
           >
             新しいタブで開く
           </a>
