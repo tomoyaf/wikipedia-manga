@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-// import titles from "./titles.json";
 import { ExpandMore, ExpandLess, Shuffle } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const colors = {
   white: "rgba(250, 250, 250, 1.0)",
@@ -22,7 +22,7 @@ const StyledListItem = styled.li`
   user-select: none;
   background: ${colors.white};
 
-  padding: 0.8rem 0;
+  padding: 0.9rem 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: none;
 
@@ -38,6 +38,8 @@ const Icon = styled.div`
 const StyledIFrame = styled.iframe`
   height: 70vh;
   margin-top: 0.8rem;
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const Wrapper = styled.div`
@@ -59,7 +61,7 @@ const Header = styled.div`
 
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
 `;
 
 const Title = styled.div`
@@ -77,7 +79,7 @@ const TitleSub = styled.div`
   color: ${colors.gray};
 
   display: block;
-  @media screen and (max-width: 360px) {
+  @media screen and (max-width: 600px) {
     display: none;
   }
 `;
@@ -130,10 +132,31 @@ function ListItem({ title, idx }) {
   );
 }
 
-const titles = [];
-
 function App() {
-  shuffle(titles);
+  const [titles, set_titles] = React.useState(undefined);
+  const fetch_titles = async () => {
+    try {
+      set_titles(undefined);
+      const res = await fetch(titles_url);
+      const titles = await res.json();
+      set_titles(shuffle(titles));
+    } catch (e) {
+      console.error(e);
+    }
+  };
+  React.useEffect(() => {
+    fetch_titles();
+  }, [set_titles]);
+
+  const titles_url =
+    "https://raw.githubusercontent.com/tomoyaf/wikipedia-manga/master/src/titles.json";
+
+  const handle_click = React.useCallback(() => {
+    set_titles(undefined);
+    const shuffled_titles = [...shuffle(titles)];
+    set_titles(shuffled_titles);
+  }, [titles]);
+
   return (
     <Wrapper>
       <Header>
@@ -141,16 +164,24 @@ function App() {
           <Title>Wikipedia漫画</Title>
           <TitleSub>ランダムにWikipediaの漫画を表示</TitleSub>
         </div>
-        <ShuffleButton variant="outlined" color="primary">
-          <Shuffle />
+        <ShuffleButton
+          variant="outlined"
+          color="primary"
+          onClick={handle_click}
+        >
+          <Shuffle style={{ marginRight: "0.4rem" }} />
           シャッフル
         </ShuffleButton>
       </Header>
-      <StyledUnorderedList>
-        {titles.map((title, idx) => (
-          <ListItem title={title} idx={idx} key={idx} />
-        ))}
-      </StyledUnorderedList>
+      {titles ? (
+        <StyledUnorderedList>
+          {titles.map((title, idx) => (
+            <ListItem title={title} idx={idx} key={idx} />
+          ))}
+        </StyledUnorderedList>
+      ) : (
+        <CircularProgress style={{ marginTop: "5rem" }} />
+      )}
     </Wrapper>
   );
 }
