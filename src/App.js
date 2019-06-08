@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ExpandMore, ExpandLess, Shuffle } from "@material-ui/icons";
+import { ExpandMore, ExpandLess, Shuffle, OpenInNew } from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
@@ -32,7 +32,7 @@ const StyledListItem = styled.li`
 `;
 
 const Icon = styled.div`
-  padding: 0 0.8rem;
+  padding: 0 0.7rem;
 `;
 
 const StyledIFrame = styled.iframe`
@@ -102,7 +102,9 @@ function ListItem({ title, idx }) {
   return (
     <StyledListItem onClick={e => set_expanded(prev => !prev)}>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <Icon>{expanded ? <ExpandLess /> : <ExpandMore />}</Icon>
+        <Icon style={{ paddingLeft: "0.1rem" }}>
+          {expanded ? <ExpandLess /> : <ExpandMore />}
+        </Icon>
         {title}
       </div>
       {expanded && (
@@ -110,15 +112,19 @@ function ListItem({ title, idx }) {
           style={{
             display: "flex",
             flexDirection: "column",
-            paddingTop: "0.8rem"
+            paddingTop: "1rem"
           }}
         >
           <a
             target="_blank"
             rel="noopener noreferrer"
             href={`https://ja.wikipedia.org/wiki/${title}`}
-            style={{ paddingLeft: "0.8rem", width: "fit-content" }}
+            style={{
+              width: "fit-content",
+              display: "flex"
+            }}
           >
+            <OpenInNew style={{ paddingRight: "0.2rem" }} />
             新しいタブで開く
           </a>
           <StyledIFrame
