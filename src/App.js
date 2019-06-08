@@ -3,8 +3,14 @@ import styled from "styled-components";
 import titles from "./titles.json";
 import { ExpandMore, ExpandLess } from "@material-ui/icons";
 
+const colors = {
+  white: "rgba(250, 250, 250, 1.0)",
+  gray: "rgba(0, 0, 0, 0.75)"
+};
+
 const StyledUnorderedList = styled.ol`
   padding: 0;
+  margin-top: 1.8rem;
 `;
 
 const StyledListItem = styled.li`
@@ -13,6 +19,7 @@ const StyledListItem = styled.li`
   flex-direction: column;
   cursor: pointer;
   user-select: none;
+  background: ${colors.white};
 
   padding: 0.8rem 0;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -44,9 +51,10 @@ const Header = styled.div`
   width: 100vw;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
-  padding: 0.8rem;
+  padding: 0.9rem;
   box-sizing: border-box;
   padding-left: 1.1rem;
+  background: ${colors.white};
 
   display: flex;
   justify-content: flex-start;
@@ -55,15 +63,17 @@ const Header = styled.div`
 
 const Title = styled.div`
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   white-space: nowrap;
 `;
 const TitleSub = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   padding-left: 0.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: ${colors.gray};
 
   display: block;
   @media screen and (max-width: 360px) {
