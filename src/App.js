@@ -15,20 +15,20 @@ const StyledUnorderedList = styled.ol`
 `;
 
 const StyledListItem = styled.li`
-  width: 90vw;
+  width: 95vw;
   display: flex;
   flex-direction: column;
   cursor: pointer;
   user-select: none;
   background: ${colors.white};
 
-  padding: 0.9rem 0;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: none;
-
+  padding: 1.05rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /* border-bottom: none; */
+  /*
   :last-child {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
+  } */
 `;
 
 const Icon = styled.div`
@@ -38,8 +38,7 @@ const Icon = styled.div`
 const StyledIFrame = styled.iframe`
   height: 70vh;
   margin-top: 0.8rem;
-  border: none;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
 const Wrapper = styled.div`
