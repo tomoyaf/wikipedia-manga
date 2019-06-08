@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import titles from "./titles.json";
-import { ExpandMore, ExpandLess } from "@material-ui/icons";
+import { ExpandMore, ExpandLess, Shuffle } from "@material-ui/icons";
+import Button from "@material-ui/core/Button";
 
 const colors = {
   white: "rgba(250, 250, 250, 1.0)",
@@ -57,7 +58,7 @@ const Header = styled.div`
   background: ${colors.white};
 
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: baseline;
 `;
 
@@ -79,6 +80,12 @@ const TitleSub = styled.div`
   @media screen and (max-width: 360px) {
     display: none;
   }
+`;
+
+const ShuffleButton = styled(Button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 function shuffle(arr) {
@@ -128,8 +135,14 @@ function App() {
   return (
     <Wrapper>
       <Header>
-        <Title>Wikipedia漫画</Title>
-        <TitleSub>ランダムにWikipediaの漫画を表示</TitleSub>
+        <div style={{ display: "flex", alignItems: "baseline" }}>
+          <Title>Wikipedia漫画</Title>
+          <TitleSub>ランダムにWikipediaの漫画を表示</TitleSub>
+        </div>
+        <ShuffleButton variant="outlined" color="primary">
+          <Shuffle />
+          シャッフル
+        </ShuffleButton>
       </Header>
       <StyledUnorderedList>
         {titles.map((title, idx) => (
