@@ -103,7 +103,7 @@ function ListItem({ title, idx }) {
   return (
     <StyledListItem onClick={e => set_expanded(prev => !prev)}>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <Icon>{expanded ? <ExpandMore /> : <ExpandLess />}</Icon>
+        <Icon>{expanded ? <ExpandLess /> : <ExpandMore />}</Icon>
         {title}
       </div>
       {expanded && (
