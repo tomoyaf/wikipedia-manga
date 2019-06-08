@@ -69,7 +69,7 @@ const Title = styled.div`
 const TitleSub = styled.div`
   font-size: 0.9rem;
   font-weight: 500;
-  padding-left: 0.5rem;
+  padding-left: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
