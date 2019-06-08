@@ -46,7 +46,7 @@ const Header = styled.div`
 
   padding: 0.8rem;
   box-sizing: border-box;
-  padding-left: 1.2rem;
+  padding-left: 1.1rem;
 
   display: flex;
   justify-content: flex-start;
@@ -56,11 +56,19 @@ const Header = styled.div`
 const Title = styled.div`
   font-weight: 500;
   font-size: 1.1rem;
-  padding-left: 0.5rem;
+  white-space: nowrap;
 `;
 const TitleSub = styled.div`
   font-size: 0.8rem;
   padding-left: 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  display: block;
+  @media screen and (max-width: 360px) {
+    display: none;
+  }
 `;
 
 function shuffle(arr) {
